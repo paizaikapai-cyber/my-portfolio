@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Nantana Monkata - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ปรับขนาดตัวอักษรพื้นฐานให้ยืดหยุ่นตามหน้าจอ */
+        :root {
+            font-size: clamp(14px, 1vw + 10px, 18px);
+        }
+        
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #FFFFFF; 
+            color: #2D3436;
+        }
+
+        .sidebar-gradient { background: linear-gradient(180deg, #3498DB 0%, #2980B9 100%); }
+        .btn-red { background: linear-gradient(90deg, #FF4B5C 0%, #D63031 100%); }
+        .btn-orange { background: linear-gradient(90deg, #FF8C52 0%, #E67E22 100%); }
+        .btn-yellow { background: linear-gradient(90deg, #F1C40F 0%, #F39C12 100%); }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+
+        /* หัวข้อที่ปรับขนาดตามหน้าจอ (Fluid Typography) */
+       /* ปรับตัวเลขตรงนี้ให้ใหญ่ขึ้นตามใจชอบครับ */
+.fluid-h1 { 
+    font-size: clamp(2.5rem, 6vw, 3.5rem); /* ขยายจาก 4rem เป็น 3rem */
+    line-height: 1.1; 
+}
+.fluid-h2 { 
+    font-size: clamp(2.5rem, 6vw, 2rem); /* ขยายจาก 4rem เป็น 3rem */
+    line-height: 1.1; 
+}
+
+.fluid-p { 
+    font-size: clamp(1.2rem, 2vw, 1.3rem); /* ขยายจาก 1.4rem เป็น 1.8rem */
+    line-height: 1.6; 
+}
+
+
+/* เอฟเฟกต์ตัวหนังสือพิมพ์ (Typing) */
+.typing-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #2563eb; /* เส้น Cursor */
+    animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #2563eb }
+}
+
+/* เอฟเฟกต์ลอยขึ้นนุ่มๆ (Fade Up) */
+.fade-up {
+    animation: fadeUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* สี Gradient สำหรับชื่อ */
+.name-gradient {
+    background: linear-gradient(90deg, #2563eb, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.welcome-gradient {
+        background: linear-gradient(135deg, #F1C40F 0%, #F39C12 50%, #E67E22 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* เพิ่ม Shadow บางๆ เพื่อให้ตัวอักษรดูนูนขึ้น */
+        filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.1));
+    }
+
+
+/* --- 1. สำหรับมือถือ (iPhone/Android) --- */
+/* เขียน Style ปกติที่นี่ ทุกอย่างจะเป็นแบบแนวตั้ง (Stack) */
+.container {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* เรียงลงมาเป็นแถวเดียว */
+}
+
+/* --- 2. สำหรับ Tablet (iPad) --- */
+/* เมื่อหน้าจอกว้างตั้งแต่ 768px ขึ้นไป */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* เริ่มเรียงเป็นแนวนอน */
+        flex-wrap: wrap;
+    }
+    .item {
+        width: 50%; /* แบ่งเป็น 2 คอลัมน์ */
+    }
+}
+
+/* --- 3. สำหรับ Laptop/Mac (Desktop) --- */
+/* เมื่อหน้าจอกว้างตั้งแต่ 1024px ขึ้นไป */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1200px; /* จำกัดความกว้างไม่ให้บานเต็มจอเกินไป */
+        margin: 0 auto;    /* จัดกึ่งกลางหน้าจอ */
+    }
+    .item {
+        width: 33.33%; /* แบ่งเป็น 3 คอลัมน์ */
+    }
+}
+
+
+    </style>
+</head>
+<body class="flex min-h-screen">
+
+    <aside class="w-72 sidebar-gradient text-white flex flex-col fixed h-full shadow-2xl">
+        <div class="p-10 text-center">
+            <div class="w-40 h-40 bg-white rounded-full mx-auto mb-3 border-4 border-blue-200 overflow-hidden shadow-xl">
+                <img src="profile.jpg" alt="Nantana" class="w-full h-full object-cover">
+            </div>
+            <h2 class="text-2xl font-semibold tracking-wide">Nantana Monkata</h2>
+
+<p class="text-blue-100 text-sm mt-2 uppercase tracking-widest opacity-80">nantana.mon@kkumail.com</p>
+
+        </div>
+
+
+
+
+<nav class="flex-1 px-6 space-y-1 mt-4"> 
+    
+    <a href="cv.html" class="flex items-center gap-3 py-2 px-5 rounded-xl transition duration-300 text-white hover:bg-white hover:bg-opacity-10">
+        <span class="material-symbols-outlined text-xl">home</span>
+        <span class="font-medium">Home</span>
+    </a>
+
+    <a href="seminar and poster.html" class="flex items-center gap-3 py-2 px-5 rounded-xl transition duration-300 text-white hover:bg-white hover:bg-opacity-10">
+        <span class="material-symbols-outlined text-xl">menu_book</span>
+        <span class="font-medium">Seminar & Poster</span>
+    </a>
+
+</nav>
+
+
+
+        <div class="p-8 text-center text-blue-200 text-sm italic">
+© 2026 Nantana Monkata • Academic Portfolio
+        </div>
+    </aside>
+
+<main class="ml-72 flex-1 p-12">
+    <h1 class="fluid-h1 font-bold mb-2 tracking-tight leading-tight fade-up">
+        <span class="welcome-gradient font-extrabold">Welcome!</span>
+        <span class="inline-block animate-bounce text-3xl">👋</span>
+    </h1>
+
+    <h2 class="fluid-h2 font-bold mb-6 fade-up" style="animation-delay: 0.3s;">
+        I'm <span class="name-gradient">Nantana Monkata</span>
+    </h2>
+
+    <p class="fluid-p text-gray-600 max-w-4xl leading-relaxed mb-5 fade-up" style="animation-delay: 0.6s;">
+        My full name is <strong class="text-gray-800">Nantana Monkata</strong> and you can call me 
+        <span class="text-orange-500 font-bold">Apple</span>. 
+        Please explore my portfolio to see my academic path and the journey experiences that define who I am today—both inside and outside the classroom.
+    </p>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<div class="flex items-center justify-center space-x-3 mb-12 mt-10 scale-90">
+    
+    <div class="flex items-center">
+        <a href="academic.html" class="min-w-[140px] px-5 h-20 rounded-[22px] bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-xl border-[3px] border-blue-100/50 transition hover:scale-105 relative">
+            <span class="material-symbols-outlined mr-3 text-2xl font-light">science</span> 
+            <span class="font-bold text-[17px] uppercase tracking-tight leading-tight text-left">Academic<br>Path</span>
+        </a>
+    </div>
+
+    <div class="flex space-x-1 px-2">
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+ <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+    </div>
+
+    <div class="flex items-center">
+        <a href="research.html" class="min-w-[140px] px-5 h-20 rounded-[22px] bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white shadow-xl border-[3px] border-purple-100/50 transition hover:scale-105 relative">
+            <span class="material-symbols-outlined mr-3 text-2xl font-light">hub</span>
+            <span class="font-bold text-[17px] uppercase tracking-tight leading-tight text-left">Research<br>Discovery</span>
+        </a>
+    </div>
+
+    <div class="flex space-x-1 px-2">
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+        <div class="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
+
+
+    </div>
+
+    <div class="flex items-center">
+        <a href="Global.html" class="min-w-[140px] px-5 h-20 rounded-[22px] bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white shadow-xl border-[3px] border-green-100/50 transition hover:scale-105 relative">
+            <span class="material-symbols-outlined mr-3 text-2xl font-light">language</span>
+            <span class="font-bold text-[17px] uppercase tracking-tight leading-tight text-left">Experiential <br> Learning </span>
+        </a>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-0">
+    
+    <div class="glass-card p-8 rounded-3xl border border-gray-100 shadow-sm">
+        <h3 class="text-xl font-bold text-blue-600 mb-4 flex items-center">
+            <span class="material-symbols-outlined mr-2">school</span> Education
+        </h3>
+        <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <p class="font-bold text-gray-800">M.Sc. in Physics, Khon Kaen University</p>
+                <p class="text-sm text-gray-600">Faculty of Science • Graduated 2025</p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4">
+                <p class="font-bold text-gray-800">B.Sc. in Physics, Khon Kaen University</p>
+                <p class="text-sm text-gray-600">Faculty of Science • Graduated 2021</p>
+            </div>
+            <div class="border-l-4 border-gray-300 pl-4">
+                <p class="font-bold text-gray-800">Nakaesamakkiwittaya School</p>
+                <p class="text-sm text-gray-600">High School • Graduated 2017</p>
+            </div>
+        </div>
+    </div>
+
+<div class="glass-card p-8 rounded-3xl border border-gray-100 shadow-sm">
+    <h3 class="text-xl font-bold text-orange-500 mb-4 flex items-center">
+        <span class="material-symbols-outlined mr-2">military_tech</span> Core Skills
+    </h3>
+    <div class="flex flex-wrap gap-2">
+        <span class="px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">Python (NumPy, SciPy, Matplotlib)</span>
+        <span class="px-4 py-2 bg-purple-50 text-purple-600 rounded-full text-sm font-medium">Data Analysis</span>
+        <span class="px-4 py-2 bg-green-50 text-green-600 rounded-full text-sm font-medium">Mathematica</span>
+        <span class="px-4 py-2 bg-yellow-50 text-yellow-700 rounded-full text-sm font-medium">SQL</span>
+        <span class="px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-medium">HTML (CSS, JavaScript)</span>
+	<span class="px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium"> Tableau </span>
+
+    </div>
+</div>
+
+
+   
+    </main>
+
+</body>
+</html>
